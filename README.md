@@ -11,9 +11,13 @@ library(qrmtools);  library(evir); library(plyr)
 
 
 ### 3. Nettoyer des données: supprimer les variables identifiants - colonne 3 & 35 :
+
 et k-anonymiser des données : k-anonymiser les 5 variables qui ont les plus probabilité de re-identification - colonne 7,11,12,13,25
+
 Input: des données brutes, k-anonymisation
+
 Output: des données k-anonymisées 
+
 function :  anonymise(inp,k) 
 
 inp <- data[,c(7,11,12,13,25)]
@@ -24,8 +28,11 @@ dim(newdata)
 
 
 ### 4. Calculer la probabilité de re-identification de chaque h-uplet combinatoire (et binning k)
+
 Input: des données, h-uplet
+
 Output: des probabilité de re-identification
+
 function : prob_re(inp, h)
 h=2
 x <- prob_re(newdata,h)$prob; length(x)
@@ -36,8 +43,11 @@ x <- prob_re(newdata,h)$prob; length(x)
 Calculer l’indicateur de dangerosité
 
 Input: des probabilité de re-identification, le percentage alpha(%) des valeurs les plus grandes, le niveau de confidence 
+
 Output: l’indicateur de dangerosité
+
 function: id.danger(x, v, alpha)
+
 LOGIT Méthode 
 function: id.danger.logit(x, v, alpha)
 
