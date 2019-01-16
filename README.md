@@ -2,6 +2,7 @@
 
 ### 1. Input le jeu des données, fichier “AV34_V3.csv" (package : gdata):
 https://www.data.gouv.fr/fr/datasets/transparence-sante-1/
+
 data <- read.csv("AV36_100.csv", header=T) ; dim(data)
 N=dim(data)[1]; M=dim(data)[2]; N; M
 
