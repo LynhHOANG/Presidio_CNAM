@@ -18,21 +18,20 @@ Plot_id <- function(x,v1,v2,alpha){
   	segments(u1,0,u1,1,col=4,lwd=2)
   	segments(u2,0,u2,1,col=5,lwd=2)
   
- 	### follow the plot.gpd function in evir
  	xx <- seq(from = 0, to = 1, length = 1000)
   	z <- qgpd(xx, xi, u, beta)
   	y <- pgpd(z, xi, u, beta)
   	plot(sort(ex),ppoints(sort(ex)),type="p",ylab="Fu(x-u)", 
-       main= paste("GPD Fit u =",round(u,4)), ylim=c(0,1),
-       xlab=paste("The",alpha*100,"% extremes values of prob of re-identification (x>=u)"))#,log="x")
+    	   main= paste("GPD Fit u =",round(u,4)), ylim=c(0,1),
+     	   xlab=paste("The",alpha*100,"% extremes values of prob of re-identification (x>=u)"))#,log="x")
   	lines(z[y >= 0], y[y >= 0], col=2, lwd=3)
   	legend("bottomright",legend=c(paste("xi =",xi),paste("beta=",beta),paste("xi_LOGIT =",xi2),paste("beta_LOGIT =",beta2)))
    
 	plot(sort(x),ppoints(sort(x)),type="l",ylab="F(x)", 
-       main= paste("POT estimator by LOGIT"), ylim=c(0,1),
-       xlab=paste("The probability of re-identification (x)"))#,log="x")
-       legend("bottomright",col=c(4,5),lty=c(1,1) ,horiz = F,
-         legend=c(paste("id_99%_LOGIT = ",round(xhat1,4)),paste("id_99.9%_ =",round(xhat2,4))))
+     	  main= paste("POT estimator by LOGIT"), ylim=c(0,1),
+       	  xlab=paste("The probability of re-identification (x)"))#,log="x")
+       	legend("bottomright",col=c(4,5),lty=c(1,1) ,horiz = F,
+        legend=c(paste("id_99%_LOGIT = ",round(xhat1,4)),paste("id_99.9%_ =",round(xhat2,4))))
   	segments(xhat1,0,xhat1,v,col=4,lwd=2)
   	segments(xhat1,v,0,v,col=4,lwd=2)
   	segments(xhat2,0,xhat2,v,col=5,lwd=2)
